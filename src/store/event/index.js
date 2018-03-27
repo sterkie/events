@@ -1,12 +1,24 @@
-// import { auth, db } from "../../firebase";
+import { auth, db } from "../../firebase";
 
-const store = {};
+const store = {
+  events: []
+};
 
-const mutations = {};
+const mutations = {
+  createEvent(state, payload) {
+    state.events.push(payload);
+  }
+};
 
-const actions = {};
+const actions = {
+  createEvent({ commit }, payload) {}
+};
 
-const getters = {};
+const getters = {
+  events(state) {
+    return state.events;
+  }
+};
 
 export default {
   store,
