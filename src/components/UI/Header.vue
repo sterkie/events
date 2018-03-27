@@ -1,24 +1,19 @@
 <template>
- <div>
-     <div class="container">
-         <nav class="level">
-             <div class="level-left">
-                 <router-link to="/" class="is-size-4">EVENTS</router-link>
+     <div class="navbar">
+         <div class="container">
+             <div class="navbar-brand">
+                 <router-link to="/" class="title">EVENTS</router-link>
              </div>
-             <div class="level-right">
-                     <div class="navitem" v-if="!isAuthenticated">
-                         <router-link to="/login">Log in</router-link>
-                     </div>
-                     <div class="navitem" v-if="!isAuthenticated">
-                         <router-link to="/register">Register</router-link>
-                     </div>
-                 <div class="navitem" v-if="isAuthenticated">
-                     <a @click="logOut">Log Out</a>
+             <div class="navbar-menu">
+                 <div class="navbar-end">
+                     <router-link to="/users" class="navbar-item">Users</router-link>
+                     <router-link to="/login" class="navbar-item" v-if="!isAuthenticated">Log In</router-link>
+                     <router-link to="/register" class="navbar-item" v-if="!isAuthenticated">Register</router-link>
+                     <a @click="logOut" class="navbar-item" v-if="isAuthenticated"> Log Out </a>
                  </div>
              </div>
-         </nav>
+         </div>
      </div>
- </div>
 </template>
 
 <script>
@@ -34,6 +29,9 @@ export default {
         this.$store.getters.user !== null &&
         this.$store.getters.user !== undefined
       );
+    },
+    user() {
+      return this.$store.getters.user;
     }
   }
 };

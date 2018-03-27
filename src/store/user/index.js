@@ -1,12 +1,20 @@
 import { auth, db } from "../../firebase";
 
 const state = {
-  user: null
+  user: null,
+  users: [],
+  selectedUser: null
 };
 
 const mutations = {
   setUser(state, payload) {
     state.user = payload;
+  },
+  setUsers(state, payload) {
+    state.users = payload;
+  },
+  selectedUser(state, payload) {
+    state.selectedUser = payload;
   }
 };
 
@@ -61,12 +69,44 @@ const actions = {
         const updatedUserInfo = { id: getters.user.id, name: doc.data().name };
         commit("setUser", updatedUserInfo);
       });
+  },
+  loadAllUsers({ commit }) {
+    db
+      .collection("users")
+      .get()
+      .then(snapshot => {
+        const users = [];
+        snapshot.forEach(doc => {
+          const tempUser = {
+            id: doc.id,
+            name: doc.data().name
+          };
+          users.push(tempUser);
+        });
+        commit("setUsers", users);
+      });
+  },
+  loadUser({ commit }, payload) {
+    db
+      .collection("users")
+      .doc(payload)
+      .get()
+      .then(doc => {
+        const currentUser = { id: payload, name: doc.data().name };
+        commit("selectedUser", currentUser);
+      });
   }
 };
 
 const getters = {
   user(state) {
     return state.user;
+  },
+  users(state) {
+    return state.users;
+  },
+  selectedUser(state) {
+    return state.selectedUser;
   }
 };
 

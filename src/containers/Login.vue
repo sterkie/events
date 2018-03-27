@@ -23,6 +23,18 @@ export default {
       password: ""
     };
   },
+  computed: {
+    user() {
+      return this.$store.getters.user;
+    }
+  },
+  watch: {
+    user(value) {
+      if (value !== null && value !== undefined) {
+        this.$router.push("/");
+      }
+    }
+  },
   methods: {
     login() {
       this.$store.dispatch("logInUser", {

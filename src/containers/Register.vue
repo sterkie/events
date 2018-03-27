@@ -27,6 +27,11 @@ export default {
       name: ""
     };
   },
+  computed: {
+    user() {
+      this.$store.getters.user;
+    }
+  },
   methods: {
     register() {
       this.$store.dispatch("registerUser", {
@@ -37,6 +42,13 @@ export default {
     },
     cancelRegister() {
       this.$router.go(-1);
+    }
+  },
+  watch: {
+    user(value) {
+      if (value !== null && value !== undefined) {
+        this.$router.push("/");
+      }
     }
   }
 };
