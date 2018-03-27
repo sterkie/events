@@ -4,6 +4,8 @@ import router from "./router";
 import store from "./store/";
 import { auth } from "./firebase";
 
+import "./assets/main.scss";
+
 Vue.config.productionTip = false;
 
 new Vue({
@@ -14,6 +16,7 @@ new Vue({
     auth.onAuthStateChanged(user => {
       if (user) {
         this.$store.dispatch("autoLog", user);
+        this.$store.dispatch("loadAllEvents");
         this.$store.dispatch("loadUserDetails");
       }
     });
