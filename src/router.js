@@ -1,21 +1,28 @@
 import Vue from "vue";
 import Router from "vue-router";
-import Home from "./views/Home.vue";
-import About from "./views/About.vue";
+
+// Styles
+
+import "./assets/main.scss";
+
+//
+
+// import Home from "./containers/Home.vue";
+import Home from "./containers/Home.vue";
+import Dashboard from "./containers/Dashboard.vue";
+import Register from "./containers/Register.vue";
+import Login from "./containers/Login.vue";
 
 Vue.use(Router);
 
+const routes = [
+  { path: "/", component: Home },
+  { path: "/dashboard", component: Dashboard },
+  { path: "/register", component: Register },
+  { path: "/login", component: Login }
+];
+
 export default new Router({
-  routes: [
-    {
-      path: "/",
-      name: "home",
-      component: Home
-    },
-    {
-      path: "/about",
-      name: "about",
-      component: About
-    }
-  ]
+  routes: routes,
+  mode: "history"
 });
