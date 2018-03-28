@@ -1,15 +1,16 @@
 <template>
-    <div>
-        the event detail page
+    <div class="container">
+        the event detail page for {{event.title}}
     </div>
 </template>
 
 <script>
 export default {
   name: "EventDetail",
+  props: ["id"],
   computed: {
     event() {
-      return this.$store.getters.selectedEvent;
+      return this.$store.getters.loadEvent(this.id);
     }
   }
 };

@@ -3,8 +3,6 @@ import Router from "vue-router";
 
 // Styles
 
-import "./assets/main.scss";
-
 import Home from "./containers/Home.vue";
 import Dashboard from "./containers/Dashboard.vue";
 import Register from "./containers/Register.vue";
@@ -25,7 +23,7 @@ const routes = [
   { path: "/users", component: UserList },
   { path: "/events", component: Events },
   { path: "/events/create", component: CreateEvent },
-  { path: "/events/:id", component: EventDetail },
+  { path: "/events/:id", component: EventDetail, props: true },
   { path: "/users/:id", component: UserDetail }
 ];
 

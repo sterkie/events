@@ -63,8 +63,12 @@ const getters = {
   events(state) {
     return state.events;
   },
-  selectedEvent(state) {
-    return state.selectedEvent;
+  loadEvent(state) {
+    return eventId => {
+      return state.events.find(event => {
+        return event.id === eventId;
+      });
+    };
   }
 };
 

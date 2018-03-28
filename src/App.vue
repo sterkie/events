@@ -1,12 +1,14 @@
 <template>
-  <div id="app">
-    <Header />
+  <v-app>
+     <Header />
     <router-view/>
-  </div>
+  </v-app>
 </template>
 
-<style lang="scss">
-
+<style>
+.page--header {
+  margin-bottom: 18px;
+}
 </style>
 
 <script>

@@ -2,8 +2,8 @@
     <div class="container">
         <h3 class="title">User List</h3>
         <div>
-            <div v-for="user in loadedUsers" :key="user.id">
-                {{user.name}} - <button class="button is-success is-small" @click="loadUser(user.id)">details</button>
+            <div v-for="user in loadedUsers" :key="user.id" class="usertile">
+                {{user.name}} <button class="button is-success is-small is-outlined" @click="loadUser(user.id)">details</button>
             </div>
         </div>
     </div>
@@ -29,5 +29,7 @@ export default {
 </script>
 
 <style scoped>
-
+.usertile {
+  margin-bottom: 12px;
+}
 </style>

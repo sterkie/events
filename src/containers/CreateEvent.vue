@@ -21,14 +21,24 @@
                 <button class="button is-danger" @click="cancelCreate">Cancel</button>
             </div>
         </form>
+        <div>
+            <datepicker :monday-first="true" v-model="suggestedDate">
+                
+            </datepicker>
+        </div>
     </div>
 </template>
 
 <script>
+import Datepicker from "vuejs-datepicker";
 export default {
   name: "CreateEvent",
+  components: {
+    Datepicker
+  },
   data() {
     return {
+      suggestedDate: new Date(),
       newEvent: {
         title: "",
         location: "",

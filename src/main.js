@@ -1,12 +1,16 @@
 import Vue from "vue";
 import App from "./App.vue";
 import router from "./router";
+import moment from "./filters/moment";
 import store from "./store/";
 import { auth } from "./firebase";
+import Vuetify from "vuetify";
 
-import "./assets/main.scss";
+import "./styles/main.styl";
 
 Vue.config.productionTip = false;
+Vue.filter("moment", moment);
+Vue.use(Vuetify);
 
 new Vue({
   router,
