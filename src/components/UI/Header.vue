@@ -7,6 +7,7 @@
              <div class="navbar-menu">
                  <div class="navbar-end">
                      <router-link to="/users" class="navbar-item">Users</router-link>
+                     <router-link to="/events" class="navbar-item">Events</router-link>
                      <router-link to="/login" class="navbar-item" v-if="!isAuthenticated">Log In</router-link>
                      <router-link to="/register" class="navbar-item" v-if="!isAuthenticated">Register</router-link>
                      <a @click="logOut" class="navbar-item" v-if="isAuthenticated"> Log Out </a>

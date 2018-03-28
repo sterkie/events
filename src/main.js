@@ -6,6 +6,8 @@ import { auth } from "./firebase";
 
 Vue.config.productionTip = false;
 
+import "./assets/main.scss";
+
 new Vue({
   router,
   store,
