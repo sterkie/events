@@ -11,10 +11,10 @@
             </div>
             <div class="field">
                 <label class="label">When</label>
-                <input type="text" placeholder="Enter a reason for the event..." class="input" v-model="newEvent.when" />
+                <DatePicker :multi="multi" v-model="newEvent.suggestedDates"></DatePicker>
             </div>
             <div class="field">
-                <textarea rows="10"  placeholder="Give some extra information about the event" v-model="newEvent.extra"/>
+                <textarea rows="10" placeholder="Give some extra information about the event" v-model="newEvent.body" />
             </div>
             <div class="field">
                 <button class="button is-success" type="submit">Create Event!</button>
@@ -22,28 +22,23 @@
             </div>
         </form>
         <div>
-            <datepicker :monday-first="true" v-model="suggestedDate">
-                
-            </datepicker>
         </div>
     </div>
 </template>
 
 <script>
-import Datepicker from "vuejs-datepicker";
+import DatePicker from "../components/DatePicker.vue";
 export default {
   name: "CreateEvent",
-  components: {
-    Datepicker
-  },
+  components: { DatePicker },
   data() {
     return {
-      suggestedDate: new Date(),
+      multi: true,
       newEvent: {
         title: "",
         location: "",
-        when: "",
-        extra: ""
+        body: "",
+        suggestedDates: []
       }
     };
   },
@@ -52,8 +47,8 @@ export default {
       const tempEvent = {
         title: this.newEvent.title,
         location: this.newEvent.location,
-        when: this.newEvent.when,
-        extra: this.newEvent.extra
+        body: this.newEvent.body,
+        suggestedDates: this.newEvent.suggestedDates
       };
       console.log("event created", tempEvent);
       this.$store.dispatch("createEvent", tempEvent);

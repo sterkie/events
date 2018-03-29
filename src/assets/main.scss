@@ -3,7 +3,19 @@
 $input-shadow: 0;
 $input-radius: 0;
 $control-radius: 0;
+$link-active: orange;
+$navbar-item-hover-color: aqua;
+$navbar-item-active-color: aqua;
 
 $bgcolor: #fff5f3;
 
 @import "~bulma";
+
+.page-header {
+  margin-bottom: 32px;
+}
+
+.app-title {
+  margin-top: 8px;
+  margin-left: 14px;
+}

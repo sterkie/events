@@ -2,12 +2,13 @@
   <div class="container">
     <h3 class="title">Home!
     </h3>
-  
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  components: {}
+};
 </script>
 
 <style scoped>

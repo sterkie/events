@@ -17,11 +17,12 @@ const mutations = {
 const actions = {
   createEvent({ commit, getters }, payload) {
     const tempEvent = {
-      creator: getters.user.id,
+      creatorId: getters.user.id,
+      creatorName: getters.user.name,
       title: payload.title,
       location: payload.location,
-      when: payload.when,
-      extra: payload.extra,
+      body: payload.body,
+      suggestedDates: payload.suggestedDates,
       createdAt: new Date(),
       status: "pending"
     };
@@ -30,7 +31,7 @@ const actions = {
       .add(tempEvent)
       .then(event => {
         console.log("new event added with ID: ", event.id);
-        commit("createEvent", tempEvent);
+        commit("createEvent", { ...tempEvent, id: event.id });
       })
       .catch(err => console.log(err));
   },
@@ -43,11 +44,11 @@ const actions = {
         snapshot.forEach(event => {
           const tempEvent = {
             id: event.id,
-            creator: event.data().creator,
+            creatorId: event.data().creatorId,
+            creatorName: event.data().creatorName,
             title: event.data().title,
             location: event.data().location,
-            when: event.data().when,
-            extra: event.data().extra,
+            suggestedDates: event.data().suggestedDates,
             createdAt: event.data().createdAt,
             status: event.data().status
           };

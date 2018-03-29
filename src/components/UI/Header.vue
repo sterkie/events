@@ -1,8 +1,8 @@
 <template>
-     <div class="navbar">
+     <div class="navbar is-transparent">
          <div class="container">
              <div class="navbar-brand">
-                 <router-link to="/" class="title">EVENTS</router-link>
+                 <router-link to="/" class="app-title title has-text-weight-light">GATHERER <small class="beta is-size-6">beta</small></router-link>
              </div>
              <div class="navbar-menu">
                  <div class="navbar-end">
@@ -22,6 +22,7 @@ export default {
   methods: {
     logOut() {
       this.$store.dispatch("logOutUser");
+      this.$router.push("/");
     }
   },
   computed: {
@@ -39,10 +40,7 @@ export default {
 </script>
 
 <style scoped>
-.navitem {
-  margin: 6px;
-}
-.navitem:hover {
-  border-bottom: 1px solid orchid;
+.beta {
+  color: aqua;
 }
 </style>
